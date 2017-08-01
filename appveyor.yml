@@ -1,0 +1,27 @@
+version: 1.0.{build}
+os: Visual Studio 2015
+clone_folder: C:\projects\swig-cmake
+test: off
+configuration:
+    #- Release
+    - Debug
+branches:
+  only:
+    - master
+environment:
+  matrix:
+    - CMAKE_PLATFORM: Visual Studio 9 2008
+    - CMAKE_PLATFORM: Visual Studio 14 2015
+install:
+  - cinstall: python
+build_script:
+  - echo Running cmake...
+  - cd c:\projects
+  - appveyor DownloadFile https://github.com/swig/swig/archive/rel-3.0.12.tar.gz
+  - 7z x rel-3.0.12.tar.gz
+  - 7z x rel-3.0.12.tar
+  - xcopy C:\projects\swig-cmake\* C:\projects\swig-3.0.12 /s /e /y || exit 1
+  - cd c:\projects\swig-3.0.12
+  - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install" .
+  - cmake --build . --config %Configuration% --target install
+  - %CD%\install\bin\swig --help
