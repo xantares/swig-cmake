@@ -17,3 +17,4 @@ build_script:
   - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install2" -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
   - cmake --build . --config Release --target install
   - C:\projects\swig-rel-3.0.12\install2\bin\swig.exe --help
+  - C:\projects\swig-rel-3.0.12\install2\bin\swig.exe -pcreversion
