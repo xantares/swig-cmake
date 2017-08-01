@@ -61,7 +61,7 @@ check_include_files( "stdlib.h;stdarg.h;string.h;float.h" HAVE_STDC_HEADERS )
 
 check_library_exists(dl dlopen "" HAVE_LIBDL)
 
-find_package(PCRE)
+find_package (PCRE)
 if (PCRE_FOUND)
   add_definitions (-DHAVE_PCRE)
   include_directories (${PCRE_INCLUDE_DIRS})
@@ -122,7 +122,9 @@ add_library (doh ${DOH_SOURCES})
 
 file (GLOB CORE_SOURCES ${SWIG_SOURCE_DIR}/Swig/*.c)
 add_library (core ${CORE_SOURCES})
-target_link_libraries (core ${PCRE_LIBRARIES})
+if (PCRE_FOUND)
+  target_link_libraries (core ${PCRE_LIBRARIES})
+endif ()
 
 file (GLOB MODULES_SOURCES ${SWIG_SOURCE_DIR}/Modules/*.cxx)
 add_library (modules ${MODULES_SOURCES}
