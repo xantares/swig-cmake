@@ -14,6 +14,6 @@ build_script:
   - 7z x rel-3.0.12.tar
   - xcopy C:\projects\swig-cmake\* C:\projects\swig-rel-3.0.12 /s /e /y || exit 1
   - cd c:\projects\swig-rel-3.0.12
-  - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install" -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
+  - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install2" -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
   - cmake --build . --config Release --target install
   - C:\projects\swig-rel-3.0.12\install2\bin\swig.exe --help
