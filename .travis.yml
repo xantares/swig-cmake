@@ -16,7 +16,7 @@ os:
 
 script:
   - wget https://github.com/swig/swig/archive/rel-3.0.12.tar.gz && tar xzf rel-3.0.12.tar.gz -C /tmp
-  - cp -r * /tmp/swig-3.0.12
-  - cd /tmp/swig-3.0.12
+  - cp -r * /tmp/swig-rel-3.0.12
+  - cd /tmp/swig-rel-3.0.12
   - cmake -DCMAKE_INSTALL_PREFIX=~/.local .
   - make install -j2 && ~/.local/bin/swig --help

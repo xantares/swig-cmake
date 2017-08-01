@@ -20,8 +20,8 @@ build_script:
   - appveyor DownloadFile https://github.com/swig/swig/archive/rel-3.0.12.tar.gz
   - 7z x rel-3.0.12.tar.gz
   - 7z x rel-3.0.12.tar
-  - xcopy C:\projects\swig-cmake\* C:\projects\swig-3.0.12 /s /e /y || exit 1
-  - cd c:\projects\swig-3.0.12
+  - xcopy C:\projects\swig-cmake\* C:\projects\swig-rel-3.0.12 /s /e /y || exit 1
+  - cd c:\projects\swig-rel-3.0.12
   - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install" .
   - cmake --build . --config %Configuration% --target install
   - %CD%\install\bin\swig --help
