@@ -6,6 +6,7 @@ environment:
     - CMAKE_PLATFORM: Visual Studio 14 2015
 
 build_script:
+  - dir /p C:\cygwin
   - cd c:\projects
   - appveyor DownloadFile https://github.com/swig/swig/archive/rel-3.0.12.tar.gz
   - 7z x rel-3.0.12.tar.gz
