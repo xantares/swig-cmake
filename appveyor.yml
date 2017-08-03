@@ -3,7 +3,7 @@ clone_folder: c:\projects\swig-cmake
 environment:
   PCRE_PREFIX: C:\pcre\pcre.8.33.0.1\build\native
   matrix:
-    - CMAKE_PLATFORM: Visual Studio 9 2008
+    - CMAKE_PLATFORM: Visual Studio 10 2010
       RTV: v100
     - CMAKE_PLATFORM: Visual Studio 14 2015
       RTV: v110
