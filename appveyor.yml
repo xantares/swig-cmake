@@ -23,6 +23,9 @@ build_script:
   - dir /p %PCRE_PREFIX%\lib\v100
   - dir /p %PCRE_PREFIX%\lib\v110\Win32
   - dir /p %PCRE_PREFIX%\lib\v110\Win32\Release
+  - dir /p %PCRE_PREFIX%\lib\v110\Win32\Release\static
+  - dir /p %PCRE_PREFIX%\lib\v110\Win32\Release\static\utf8
+  
   - dir /p %PCRE_PREFIX%\lib%PCRE_VARIANT%
   - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install2" -DPCRE_INCLUDE_DIR=%PCRE_PREFIX%\include -DPCRE_LIBRARY=%PCRE_PREFIX%\lib%PCRE_VARIANT%\pcre.lib -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
   - cmake --build . --config Release --target install
