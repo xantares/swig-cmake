@@ -61,7 +61,7 @@ check_include_files( "stdlib.h;stdarg.h;string.h;float.h" HAVE_STDC_HEADERS )
 
 check_library_exists(dl dlopen "" HAVE_LIBDL)
 
-find_package (PCRE)
+find_package (PCRE REQUIRED)
 if (PCRE_FOUND)
   add_definitions (-DHAVE_PCRE)
   include_directories (${PCRE_INCLUDE_DIRS})
