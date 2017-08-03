@@ -2,7 +2,6 @@ clone_folder: c:\projects\swig-cmake
 
 environment:
   PCRE_PREFIX: C:\pcre\pcre.8.33.0.1\build\native
-  PCRE_VARIANT: \v110\Win32\Release\static
   matrix:
     - CMAKE_PLATFORM: Visual Studio 9 2008
     - CMAKE_PLATFORM: Visual Studio 14 2015
@@ -16,18 +15,7 @@ build_script:
   - xcopy C:\projects\swig-cmake\* C:\projects\swig-rel-3.0.12 /s /e /y || exit 1
   - cd c:\projects\swig-rel-3.0.12
   - Tools\nuget-install.cmd pcre -Verbosity quiet -Version 8.33.0.1 -OutputDirectory C:\pcre
-  - dir /p %PCRE_PREFIX%
-  - dir /p %PCRE_PREFIX%\include
-  - dir /p %PCRE_PREFIX%\lib
-  - dir /p %PCRE_PREFIX%\lib\v110
-  - dir /p %PCRE_PREFIX%\lib\v100
-  - dir /p %PCRE_PREFIX%\lib\v110\Win32
-  - dir /p %PCRE_PREFIX%\lib\v110\Win32\Release
-  - dir /p %PCRE_PREFIX%\lib\v110\Win32\Release\static
-  - dir /p %PCRE_PREFIX%\lib\v110\Win32\Release\static\utf8
-  
-  - dir /p %PCRE_PREFIX%\lib%PCRE_VARIANT%
-  - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install2" -DPCRE_INCLUDE_DIR=%PCRE_PREFIX%\include -DPCRE_LIBRARY=%PCRE_PREFIX%\lib%PCRE_VARIANT%\pcre.lib -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
+  - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install2" -DPCRE_INCLUDE_DIR=%PCRE_PREFIX%\include -DPCRE_LIBRARY=%PCRE_PREFIX%\lib\v110\Win32\Release\static\utf8\pcre8.lib -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
   - cmake --build . --config Release --target install
   - C:\projects\swig-rel-3.0.12\install2\bin\swig.exe --help
   - C:\projects\swig-rel-3.0.12\install2\bin\swig.exe -pcreversion
