@@ -16,6 +16,7 @@ build_script:
   - cd c:\projects\swig-rel-3.0.12
   - Tools\nuget-install.cmd pcre -Verbosity quiet -Version 8.33.0.1 -OutputDirectory C:\pcre
   - dir /p C:\pcre
+  - dir /p C:\pcre\pcre.8.33.0.1
   - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install2" -DCMAKE_PREFIX_PATH=C:\pcre -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
   - cmake --build . --config Release --target install
   - C:\projects\swig-rel-3.0.12\install2\bin\swig.exe --help
