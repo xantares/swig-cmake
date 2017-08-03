@@ -1,6 +1,8 @@
 clone_folder: c:\projects\swig-cmake
 
 environment:
+  PCRE_PREFIX: C:\pcre\pcre.8.33.0.1\build\native
+  PCRE_VARIANT: \Win32\v110\static\Release
   matrix:
     - CMAKE_PLATFORM: Visual Studio 9 2008
     - CMAKE_PLATFORM: Visual Studio 14 2015
@@ -14,8 +16,6 @@ build_script:
   - xcopy C:\projects\swig-cmake\* C:\projects\swig-rel-3.0.12 /s /e /y || exit 1
   - cd c:\projects\swig-rel-3.0.12
   - Tools\nuget-install.cmd pcre -Verbosity quiet -Version 8.33.0.1 -OutputDirectory C:\pcre
-  - set PCRE_PREFIX="C:\pcre\pcre.8.33.0.1\build\native"
-  - set PCRE_VARIANT="\Win32\v110\static\Release"
   - dir /p %PCRE_PREFIX%
   - dir /p %PCRE_PREFIX%\include%PCRE_VARIANT%
   - dir /p %PCRE_PREFIX%\lib%PCRE_VARIANT%
