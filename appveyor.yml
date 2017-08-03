@@ -19,7 +19,8 @@ build_script:
   - dir /p %PCRE_PREFIX%
   - dir /p %PCRE_PREFIX%\include
   - dir /p %PCRE_PREFIX%\lib
-  - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install2" -DPCRE_INCLUDE_DIR=%PCRE_PREFIX%\include -DPCRE_LIBRARY=%PCRE_PREFIX%\lib\pcre.lib -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
+  - dir /p %PCRE_PREFIX%\lib%PCRE_VARIANT%
+  - cmake -LAH -G "%CMAKE_PLATFORM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="%CD:\=/%/install2" -DPCRE_INCLUDE_DIR=%PCRE_PREFIX%\include -DPCRE_LIBRARY=%PCRE_PREFIX%\lib%PCRE_VARIANT%\pcre.lib -DBISON_EXECUTABLE=C:/cygwin/bin/bison.exe .
   - cmake --build . --config Release --target install
   - C:\projects\swig-rel-3.0.12\install2\bin\swig.exe --help
   - C:\projects\swig-rel-3.0.12\install2\bin\swig.exe -pcreversion
