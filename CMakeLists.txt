@@ -6,7 +6,14 @@ endif ()
 
 project (swig)
 
-set (SWIG_VERSION 4.0.0)
+
+file (STRINGS configure.ac line LIMIT_COUNT 1 REGEX "AC_INIT\\(.*\\)" )
+if (line MATCHES "AC_INIT\\(\\[(.*)\\],[ \t]*\\[(.*)\\],[ \t]*\\[(.*)\\]\\)" )
+  set (SWIG_VERSION ${CMAKE_MATCH_2})
+  set (PACKAGE_BUGREPORT ${CMAKE_MATCH_3})
+else ()
+  message (SEND_ERROR "Could not parse version from configure.ac")
+endif ()
 
 set(SWIG_ROOT ${PROJECT_SOURCE_DIR})
 
